@@ -17,13 +17,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:photo_sharing/components/contribute_photo_dialog.dart';
+import 'package:photo_sharing/components/primary_raised_button.dart';
+import 'package:photo_sharing/model/photos_library_api_model.dart';
+import 'package:photo_sharing/photos_library_api/album.dart';
+import 'package:photo_sharing/photos_library_api/media_item.dart';
+import 'package:photo_sharing/photos_library_api/search_media_items_response.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/components/contribute_photo_dialog.dart';
-import 'package:sharing_codelab/components/primary_raised_button.dart';
-import 'package:sharing_codelab/model/photos_library_api_model.dart';
-import 'package:sharing_codelab/photos_library_api/album.dart';
-import 'package:sharing_codelab/photos_library_api/media_item.dart';
-import 'package:sharing_codelab/photos_library_api/search_media_items_response.dart';
 
 class TripPage extends StatefulWidget {
   const TripPage({Key key, this.searchResponse, this.album}) : super(key: key);

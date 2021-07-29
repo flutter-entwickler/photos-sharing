@@ -16,8 +16,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/model/photos_library_api_model.dart';
-import 'package:sharing_codelab/pages/home_page.dart';
+
+import 'model/photos_library_api_model.dart';
+import 'pages/home_page.dart';
 
 void main() {
   final apiModel = PhotosLibraryApiModel();

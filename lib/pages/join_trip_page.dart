@@ -15,8 +15,9 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:photo_sharing/model/photos_library_api_model.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/model/photos_library_api_model.dart';
+
 
 class JoinTripPage extends StatefulWidget {
   @override

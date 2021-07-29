@@ -16,9 +16,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:photo_sharing/model/photos_library_api_model.dart';
+import 'package:photo_sharing/pages/login_page.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/model/photos_library_api_model.dart';
-import 'package:sharing_codelab/pages/login_page.dart';
 
 class TripAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override

@@ -18,21 +18,21 @@ import 'dart:collection';
 import 'dart:io';
 
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:photo_sharing/photos_library_api/album.dart';
+import 'package:photo_sharing/photos_library_api/batch_create_media_items_request.dart';
+import 'package:photo_sharing/photos_library_api/batch_create_media_items_response.dart';
+import 'package:photo_sharing/photos_library_api/create_album_request.dart';
+import 'package:photo_sharing/photos_library_api/get_album_request.dart';
+import 'package:photo_sharing/photos_library_api/join_shared_album_request.dart';
+import 'package:photo_sharing/photos_library_api/join_shared_album_response.dart';
+import 'package:photo_sharing/photos_library_api/list_albums_response.dart';
+import 'package:photo_sharing/photos_library_api/list_shared_albums_response.dart';
+import 'package:photo_sharing/photos_library_api/photos_library_api_client.dart';
+import 'package:photo_sharing/photos_library_api/search_media_items_request.dart';
+import 'package:photo_sharing/photos_library_api/search_media_items_response.dart';
+import 'package:photo_sharing/photos_library_api/share_album_request.dart';
+import 'package:photo_sharing/photos_library_api/share_album_response.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/photos_library_api/album.dart';
-import 'package:sharing_codelab/photos_library_api/batch_create_media_items_request.dart';
-import 'package:sharing_codelab/photos_library_api/batch_create_media_items_response.dart';
-import 'package:sharing_codelab/photos_library_api/create_album_request.dart';
-import 'package:sharing_codelab/photos_library_api/join_shared_album_request.dart';
-import 'package:sharing_codelab/photos_library_api/get_album_request.dart';
-import 'package:sharing_codelab/photos_library_api/join_shared_album_response.dart';
-import 'package:sharing_codelab/photos_library_api/list_albums_response.dart';
-import 'package:sharing_codelab/photos_library_api/list_shared_albums_response.dart';
-import 'package:sharing_codelab/photos_library_api/photos_library_api_client.dart';
-import 'package:sharing_codelab/photos_library_api/search_media_items_request.dart';
-import 'package:sharing_codelab/photos_library_api/search_media_items_response.dart';
-import 'package:sharing_codelab/photos_library_api/share_album_request.dart';
-import 'package:sharing_codelab/photos_library_api/share_album_response.dart';
 
 class PhotosLibraryApiModel extends Model {
   PhotosLibraryApiModel() {
@@ -72,8 +72,7 @@ class PhotosLibraryApiModel extends Model {
 
   Future<GoogleSignInAccount> signIn() => _googleSignIn.signIn();
 
-  Future<GoogleSignInAccount> signInSilently() =>
-      _googleSignIn.signInSilently();
+  Future<GoogleSignInAccount> signInSilently() => _googleSignIn.signInSilently();
 
   Future<void> signOut() => _googleSignIn.disconnect();
 
@@ -83,19 +82,16 @@ class PhotosLibraryApiModel extends Model {
     return album;
   }
 
-  Future<Album> getAlbum(String id) async =>
-      client.getAlbum(GetAlbumRequest.defaultOptions(id));
+  Future<Album> getAlbum(String id) async => client.getAlbum(GetAlbumRequest.defaultOptions(id));
 
   Future<JoinSharedAlbumResponse> joinSharedAlbum(String shareToken) async {
-    final response =
-        await client.joinSharedAlbum(JoinSharedAlbumRequest(shareToken));
+    final response = await client.joinSharedAlbum(JoinSharedAlbumRequest(shareToken));
     updateAlbums();
     return response;
   }
 
   Future<ShareAlbumResponse> shareAlbum(String id) async {
-    final response =
-        await client.shareAlbum(ShareAlbumRequest.defaultOptions(id));
+    final response = await client.shareAlbum(ShareAlbumRequest.defaultOptions(id));
     updateAlbums();
     return response;
   }
@@ -107,11 +103,9 @@ class PhotosLibraryApiModel extends Model {
     return client.uploadMediaItem(image);
   }
 
-  Future<BatchCreateMediaItemsResponse> createMediaItem(
-      String uploadToken, String albumId, String description) async {
+  Future<BatchCreateMediaItemsResponse> createMediaItem(String uploadToken, String albumId, String description) async {
     // Construct the request with the token, albumId and description.
-    final request =
-        BatchCreateMediaItemsRequest.inAlbum(uploadToken, albumId, description);
+    final request = BatchCreateMediaItemsRequest.inAlbum(uploadToken, albumId, description);
 
     // Make the API call to create the media item. The response contains a
     // media item.
@@ -122,8 +116,7 @@ class PhotosLibraryApiModel extends Model {
     return response;
   }
 
-  UnmodifiableListView<Album> get albums =>
-      UnmodifiableListView<Album>(_albums ?? <Album>[]);
+  UnmodifiableListView<Album> get albums => UnmodifiableListView<Album>(_albums ?? <Album>[]);
 
   void updateAlbums() async {
     // Reset the flag before loading new albums

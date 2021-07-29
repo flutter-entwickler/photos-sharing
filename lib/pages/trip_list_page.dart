@@ -17,14 +17,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:photo_sharing/components/primary_raised_button.dart';
+import 'package:photo_sharing/components/trip_app_bar.dart';
+import 'package:photo_sharing/model/photos_library_api_model.dart';
+import 'package:photo_sharing/photos_library_api/album.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:sharing_codelab/model/photos_library_api_model.dart';
-import 'package:sharing_codelab/pages/create_trip_page.dart';
-import 'package:sharing_codelab/pages/join_trip_page.dart';
-import 'package:sharing_codelab/components/primary_raised_button.dart';
-import 'package:sharing_codelab/components/trip_app_bar.dart';
-import 'package:sharing_codelab/pages/trip_page.dart';
-import 'package:sharing_codelab/photos_library_api/album.dart';
+
+import 'create_trip_page.dart';
+import 'join_trip_page.dart';
+import 'trip_page.dart';
+
 
 class TripListPage extends StatelessWidget {
   @override
